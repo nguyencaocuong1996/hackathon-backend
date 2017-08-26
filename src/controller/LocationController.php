@@ -9,11 +9,13 @@
 namespace fooco\controller;
 
 
+use fooco\database\model\location\LocationCollection;
 use fooco\location\LocationManagement;
 
 class LocationController
 {
-    public function getAllLocation(){
-
+    public function getAllLocation() : array {
+        $lc = new LocationCollection('*');
+        return $lc->buildTree();
     }
 }

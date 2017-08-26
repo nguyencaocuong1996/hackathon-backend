@@ -10,6 +10,14 @@
 namespace fooco\database;
 abstract class DB
 {
+
+    //USER
+    const TABLE_USER = 'users';
+    const COL_USER_ID = 'userId';
+    const COL_USER_NAME = 'userName';
+    const COL_USER_PASSWORD = 'userPassword';
+    const COL_USER_PHONE = 'userPhone';
+
     //OWNER
     const TABLE_OWNER = 'owners';
     const COL_OWNER_ID = 'ownerId';

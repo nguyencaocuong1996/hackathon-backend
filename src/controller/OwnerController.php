@@ -14,6 +14,17 @@ use football\database\model\owners\OwnerManagement;
 
 class OwnerController
 {
+    private static $_instance;
+
+    /**
+     * @return mixed
+     */
+    public static function getInstance() : OwnerController
+    {
+        if (self::$_instance == null) self::$_instance = new OwnerController();
+        return self::$_instance;
+    }
+
     private static $ownerManagement;
     function __construct()
     {
@@ -21,9 +32,12 @@ class OwnerController
             self::$ownerManagement = new OwnerManagement();
     }
 
-    function createOwner(array $ownerData) : bool {
+    function createOwner(array $ownerData) : array {
         $owner  = new Owner($ownerData);
         self::$ownerManagement->save($owner);
-        return (self::$ownerManagement->isInserted());
+        if (self::$ownerManagement->isInserted()){
+            return $owner->toArray();
+        }
+        return array();
     }
 }

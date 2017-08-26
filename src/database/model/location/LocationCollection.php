@@ -12,6 +12,9 @@ namespace fooco\database\model\location;
 use fooco\database\DB;
 use wind\database\RecordCollection;
 
+/**
+ * @property array|bool|string _properties
+ */
 class LocationCollection extends RecordCollection
 {
     protected static $_table;

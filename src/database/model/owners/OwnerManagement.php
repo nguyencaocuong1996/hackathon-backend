@@ -17,6 +17,8 @@ use Exception;
  * @property array  _tableFields
  * @property array  _primaryFields
  * @property string _table
+ * @property array  _uniqueFields
+ * @property bool   _AI
  */
 class OwnerManagement extends Model
 {
@@ -31,6 +33,8 @@ class OwnerManagement extends Model
         $this->_table = DB::TABLE_OWNER;
         $this->_tableFields = array( DB::COL_OWNER_ID );
         $this->_primaryFields = array( DB::COL_OWNER_ID );
+        $this->_uniqueFields = array( DB::COL_OWNER_USER_NAME );
+        $this->_AI = true;
     }
 
     public function getById($ownerId): Owner

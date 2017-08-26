@@ -137,7 +137,7 @@ abstract class Model implements IModelAction
         return $record;
     }
 
-    protected function _insert(&$record)
+    public function _insert(&$record)
     {
         $this->_inserted = false;
         if ($record instanceof Record) {
@@ -182,7 +182,7 @@ abstract class Model implements IModelAction
         return false;
     }
 
-    protected function _update(&$record): bool
+    public function _update(&$record): bool
     {
         $this->_updated = false;
         if ($record instanceof Record) {
