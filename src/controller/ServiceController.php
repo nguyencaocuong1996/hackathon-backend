@@ -35,6 +35,13 @@ class ServiceController
         
     }
 
+    function getByOwnerId($ownerId){
+        $serviceCollection = new ServiceCollection('*');
+        $serviceCollection->getByOwnerId($ownerId);
+        return $serviceCollection->toArray();
+
+    }
+
     function getByTypeId($typeId) : array
     {
         $serviceCollection = new ServiceCollection('*');

@@ -32,6 +32,22 @@ class ServiceCollection extends RecordCollection
         );
     }
 
+    function getByOwnerId($ownerId = 0) : ServiceCollection
+    {
+        if ($ownerId!=0)
+        {
+            global $db;
+            $db->where(DB::COL_OWNER_ID, $ownerId);
+            $this->_collection = $db->get(self::$_table, null, $this->_properties);
+//            echo $db->getLastQuery();
+            array_walk($this->_collection, function(&$item, $key){
+                $randIndex = array_rand($this->listAvatar);
+                $item[DB::COL_SERVICE_AVATAR] = $this->listAvatar[$randIndex];
+            });
+        }
+        return $this;
+    }
+
     function getByType($typeId = 0) : ServiceCollection
     {
         if ($typeId!=0){

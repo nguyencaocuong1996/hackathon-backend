@@ -48,4 +48,10 @@ class UserController
         $userPass = $loginData["userPassword"];
         return self::$userManagement->login($userName, $userPass);
     }
+
+    function getAllUserId(){
+        global $db;
+        return $db->get(DB::TABLE_USER, null, 'userId');
+
+    }
 }

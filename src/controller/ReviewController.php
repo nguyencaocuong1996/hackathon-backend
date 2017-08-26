@@ -58,7 +58,6 @@ class ReviewController
                     DB::COL_SERVICE_REVIEW_NUM=>$db->inc(1)
                 );
                  $db->update(DB::TABLE_SERVICE, $dataUpd, 1);
-                echo $db->getLastQuery();
                 return true;
         }
         return false;
@@ -66,7 +65,6 @@ class ReviewController
 
     function reviewComment($reviewData) : bool
     {
-//        var_dump($reviewData);
         global $db;
         $commentId = $reviewData[DB::COL_REVIEW_ID];
         $numStar = $reviewData[DB::COL_REVIEW_STAR];
@@ -75,7 +73,6 @@ class ReviewController
             DB::COL_REVIEW_STAR=>$db->inc($numStar),
             DB::COL_REVIEW_NUM=>$db->inc(1)
         );
-//        var_dump($dataUpd);
         $db->where(DB::COL_REVIEW_ID, $commentId);
         if ($db->update(DB::TABLE_REVIEW, $dataUpd)){
             $db->where(DB::COL_USER_ID, $userOfComment);

@@ -34,7 +34,7 @@ class ReviewCollection extends RecordCollection
         $joinCond = DB::TABLE_USER.'.'.DB::COL_USER_ID . ' = ' . DB::TABLE_REVIEW . '.' . DB::COL_USER_ID;
         $db->join(DB::TABLE_USER . ' ', $joinCond, 'LEFT');
         $this->_collection = $db->get(self::$_table, null, $this->_properties);
-        echo $db->getLastQuery();
+//        echo $db->getLastQuery();
         return $this;
     }
     public function get() : ReviewCollection

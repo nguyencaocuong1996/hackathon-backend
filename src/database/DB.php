@@ -36,8 +36,8 @@ abstract class DB
     const COL_SERVICE_AVATAR = 'avatar';
     const COL_SERVICE_REVIEW_STAR = 'reviewStar';
     const COL_SERVICE_REVIEW_NUM    = 'reviewNum';
-    const COL_SERVICE_LAT = 'serviceLat';
-    const COL_SERVICE_LNG = 'serviceLng';
+    const COL_SERVICE_LAT = 'addressLat';
+    const COL_SERVICE_LNG = 'addressLng';
     const COL_SERVICE_ADDRESS = 'address';
 
     //SERVICE TYPE

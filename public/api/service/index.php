@@ -27,7 +27,15 @@ if (isset($_REQUEST['action'])){
             $res->setStatus(true);
             $res->setMessage("Get success!");
             break;
-        case 'default':
+
+        case 'getByOwnerId':
+            $ownerId = $_REQUEST['ownerId'];
+            $listService = $serviceController->getByOwnerId($ownerId);
+            $res->setMessage("get service success!");
+            $res->setStatus(true);
+            $res->setData($listService);
+            break;
+        default:
             die("Bad request!");
             break;
     }
