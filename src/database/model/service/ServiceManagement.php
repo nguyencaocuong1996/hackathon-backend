@@ -13,6 +13,11 @@ use fooco\database\model\owners\Owner;
 use wind\database\Model;
 use fooco\database\DB;
 
+/**
+ * @property array  _tableFields
+ * @property bool   _AI
+ * @property string _table
+ */
 class ServiceManagement extends Model
 {
     private static $_instance;
@@ -32,16 +37,16 @@ class ServiceManagement extends Model
         $this->_table = DB::TABLE_SERVICE;
         $this->_tableFields = array(
             DB::COL_SERVICE_ID,
-            DB::COL_ADDRESS_ID,
+            DB::COL_ADDRESS,
             DB::COL_SERVICE_NAME,
             DB::COL_SERVICE_TYPE_ID
         );
         $this->_primaryFields[] = DB::COL_SERVICE_ID;
-        $this->_uniqueFields[] = DB::COL_SERVICE_ID;
+        $this->_uniqueFields[] = DB::COL_SERVICE_NAME;
         $this->_AI = true;
     }
 
-    public function getById(int $ownerId = 0) : Owner
+    public function getByTypeId(int $ownerId = 0) : Owner
     {
         if ($ownerId !== 0){
             $data = $this->getOne(DB::COL_SERVICE_ID, $ownerId);

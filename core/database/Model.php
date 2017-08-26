@@ -168,6 +168,7 @@ abstract class Model implements IModelAction
             }
             $this->_connection->startTransaction();
             $insertId = $this->_connection->insert($this->_table, $recordData);
+            var_dump($this->_connection->getLastQuery());
             if ($insertId) {
                 if ($this->_AI) {
                     $record->{$this->_primaryFields[ 0 ]} = $insertId;

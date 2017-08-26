@@ -8,13 +8,14 @@
 
 namespace fooco\controller;
 
-
-use fooco\database\DB;
+use fooco\database\model\service\Service;
+use fooco\database\model\service\ServiceCollection;
 use fooco\database\model\service\ServiceManagement;
 
 class ServiceController
 {
     private static $_instance;
+    private $serviceManagement;
 
     /**
      * @return mixed
@@ -24,13 +25,32 @@ class ServiceController
         if (self::$_instance == null) self::$_instance = new ServiceController();
         return self::$_instance;
     }
+
+    function __construct()
+    {
+        $this->serviceManagement = ServiceManagement::getInstance();
+    }
+
     function getAllService(){
         
     }
 
-    public function getById(int $id) : array {
-        $service =  ServiceManagement::getInstance()->getOne(DB::COL_SERVICE_ID, $id);
+    function getByTypeId($typeId) : array
+    {
+        $serviceCollection = new ServiceCollection('*');
+        $serviceCollection->getByType($typeId);
+        return $serviceCollection->toArray();
+    }
 
-        return $service;
+    public function getById(int $id) : array {
+
+        return array();
+    }
+
+    public function createService($params) : array
+    {
+        $newService = new Service($params);
+        $this->serviceManagement->save($newService);
+        return $newService->toArray();
     }
 }

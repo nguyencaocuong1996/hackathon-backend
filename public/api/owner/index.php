@@ -9,17 +9,26 @@ use wind\Response;
 use fooco\controller\OwnerController;
 require_once '../../../load.php';
 header("Content-type: Application/Json");
-if (isset($_REQUEST['a']) && isset($_REQUEST['params'])){
+if (isset($_REQUEST['action'])){
     $ownerController = OwnerController::getInstance();
-    $action = $_REQUEST['a'];
+    $action = $_REQUEST['action'];
     $res = new Response();
-    $ownerData = json_decode($_REQUEST['params'], true);
     switch ($action){
         case 'create' :
-            $owner = $ownerController->createOwner($ownerData);
+            $owner = $ownerController->createOwner($_REQUEST);
             $res->setMessage("create owner success");
             $res->setStatus(true);
             $res->setData($owner);
+            break;
+        case 'login' :
+            $owner = $ownerController->login($_REQUEST);
+            if (!empty($owner)){
+                $res->setData($owner);
+                $res->setStatus(true);
+                $res->setMessage("login success!");
+            } else {
+                $res->setMessage("login fail!");
+            }
             break;
         case 'default':
             die("Bad request!");

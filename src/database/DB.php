@@ -31,11 +31,14 @@ abstract class DB
     const TABLE_SERVICE = 'services';
     const COL_SERVICE_ID = 'serviceId';
     const COL_SERVICE_NAME = 'serviceName';
+    const COL_SERVICE_AVATAR = 'avatar';
 
     //SERVICE TYPE
     const TABLE_SERVICE_TYPE = 'service_type';
     const COL_SERVICE_TYPE_ID = 'serviceTypeId';
     const COL_SERVICE_TYPE_NAME = 'serviceTypeName';
+    const COL_SERVICE_LAT = 'serviceLat';
+    const COL_SERVICE_LNG = 'serviceLng';
 
     //REVIEW
     const TABLE_REVIEW = 'reviews';
@@ -59,7 +62,7 @@ abstract class DB
 
     //ADDRESS
     const TABLE_ADDRESS = 'address';
-    const COL_ADDRESS_ID = 'addressId';
+    const COL_ADDRESS = 'address';
     const COL_ADDRESS_DETAIL = 'addressDetail';
     const COL_LOCATION_LAT = 'addressLat';
     const COL_LOCATION_LNG = 'addressLng';

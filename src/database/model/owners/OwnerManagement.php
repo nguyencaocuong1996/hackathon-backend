@@ -54,5 +54,17 @@ class OwnerManagement extends Model
         return new Owner();
     }
 
+    public function login($name, $pass) : array
+    {
+        $userPass = md5($pass);
+        $this->_connection->where(DB::COL_OWNER_USER_NAME, $name);
+        $this->_connection->where(DB::COL_OWNER_PASSWORD, $pass);
+        $check = $this->_connection->getOne(DB::TABLE_OWNER);
+        if (!empty($check)){
+            return $check;
+        }
+        return array();
+    }
+
 
 }

@@ -8,16 +8,15 @@
 use wind\Response;
 use fooco\controller\UserController;
 require_once '../../../load.php';
-//header("Content-type: Application/Json");
-if (isset($_REQUEST['a']) && isset($_REQUEST['params'])){
+header("Content-type: Application/Json");
+if (isset($_REQUEST['action'])){
     $userController = UserController::getInstance();
-    $action = $_REQUEST['a'];
     $res = new Response();
-    $params = json_decode($_REQUEST['params'], true);
+    $action = $_REQUEST['action'];
     switch ($action){
         case 'create' :
-            if (!empty($params)){
-                $user = $userController->createUser($params);
+            if (!empty($_REQUEST)){
+                $user = $userController->createUser($_REQUEST);
                 if (!empty($user)) {
                     $res->setMessage("create owner success");
                     $res->setStatus(true);
@@ -31,7 +30,7 @@ if (isset($_REQUEST['a']) && isset($_REQUEST['params'])){
             }
             break;
         case 'login' :
-            $user = $userController->login($params);
+            $user = $userController->login($_REQUEST);
             if (empty($user)) {
                 $res->setMessage("Login fail!");
             } else {

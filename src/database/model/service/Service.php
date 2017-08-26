@@ -6,8 +6,7 @@
  * Date: 4/11/2017
  * Time: 10:32 AM
  */
-namespace fooco\database\model;
-use Exception;
+namespace fooco\database\model\service;
 use fooco\database\DB;
 use wind\database\Record;
 
@@ -21,20 +20,22 @@ class Service extends Record
         $this->_tableFields = array(
             DB::COL_SERVICE_ID,
             DB::COL_SERVICE_NAME,
-            DB::COL_ADDRESS_ID,
-            DB::COL_SERVICE_TYPE_ID
+            DB::COL_ADDRESS,
+            DB::COL_SERVICE_TYPE_ID,
+            DB::COL_SERVICE_LAT,
+            DB::COL_SERVICE_LNG
         );
         parent::__construct($recordData);
     }
     
-    public static function addOrder(array $orderData) : bool
-    {
-        global $db;
-        $orderId = $db->insert(DB::TABLE_PITCH_ORDER, $orderData);
-        if ($orderId > 0){
-            return true;
-        } else {
-            throw new Exception("Không thể đặt sân!");
-        }
-    }
+//    public static function addOrder(array $orderData) : bool
+//    {
+//        global $db;
+//        $orderId = $db->insert(DB::TABLE_PITCH_ORDER, $orderData);
+//        if ($orderId > 0){
+//            return true;
+//        } else {
+//            throw new Exception("Không thể đặt sân!");
+//        }
+//    }
 }

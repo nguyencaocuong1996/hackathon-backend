@@ -9,6 +9,7 @@
 namespace fooco\controller;
 
 
+use fooco\database\DB;
 use fooco\database\model\owners\Owner;
 use football\database\model\owners\OwnerManagement;
 
@@ -34,10 +35,22 @@ class OwnerController
 
     function createOwner(array $ownerData) : array {
         $owner  = new Owner($ownerData);
+        $owner->{DB::COL_OWNER_PASSWORD} = md5($owner->{DB::COL_OWNER_PASSWORD});
         self::$ownerManagement->save($owner);
         if (self::$ownerManagement->isInserted()){
             return $owner->toArray();
         }
+        return array();
+    }
+
+    function login(array $loginData) : array
+    {
+        $userName = $loginData[DB::COL_OWNER_USER_NAME];
+        $password = $loginData[DB::COL_OWNER_PASSWORD];
+        $owner = self::$ownerManagement->login($userName, $password);
+        if (!empty($owner)){
+            return $owner;
+        };
         return array();
     }
 }

@@ -19,11 +19,14 @@ abstract class Record implements JsonSerializable, IRecordAction
     function __construct(array $recordData = null)
     {
         if (is_array($recordData) && isset($recordData)) {
-            $this->_properties = array_keys($recordData);
             //Chuyển đổi giá trị từ mảng sang thuộc tính của object
-            foreach ($recordData as $key => $value) {
-                $this->{$key} = $value;
-            }
+            array_walk($recordData, function($value, $key){
+                //Nếu nó map với _tableField thì mới chuyển
+                if (in_array($key, $this->_tableFields)){
+                    $this->_properties[] = $key;
+                    $this->{$key} = $value;
+                }
+            });
         } else {
             $this->_properties = [];
         }
