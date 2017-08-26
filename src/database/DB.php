@@ -17,6 +17,8 @@ abstract class DB
     const COL_USER_NAME = 'userName';
     const COL_USER_PASSWORD = 'userPassword';
     const COL_USER_PHONE = 'userPhone';
+    const COL_USER_TOTAL_STAR = 'totalStar';
+    const COL_USER_TOTAL_REVIEW = 'totalReview';
 
     //OWNER
     const TABLE_OWNER = 'owners';
@@ -32,19 +34,24 @@ abstract class DB
     const COL_SERVICE_ID = 'serviceId';
     const COL_SERVICE_NAME = 'serviceName';
     const COL_SERVICE_AVATAR = 'avatar';
+    const COL_SERVICE_REVIEW_STAR = 'reviewStar';
+    const COL_SERVICE_REVIEW_NUM    = 'reviewNum';
+    const COL_SERVICE_LAT = 'serviceLat';
+    const COL_SERVICE_LNG = 'serviceLng';
+    const COL_SERVICE_ADDRESS = 'address';
 
     //SERVICE TYPE
     const TABLE_SERVICE_TYPE = 'service_type';
     const COL_SERVICE_TYPE_ID = 'serviceTypeId';
     const COL_SERVICE_TYPE_NAME = 'serviceTypeName';
-    const COL_SERVICE_LAT = 'serviceLat';
-    const COL_SERVICE_LNG = 'serviceLng';
 
     //REVIEW
     const TABLE_REVIEW = 'reviews';
     const COL_REVIEW_ID = 'reviewId';
-    const COL_REVIEW_USER_NAME = 'reviewUserName';
     const COL_REVIEW_CONTENT = 'reviewContent';
+    const COL_REVIEW_STAR = 'reviewStar';
+    const COL_REVIEW_NUM = 'reviewNum';
+    const COL_REVIEW_STAR_FOR_SERVICE = 'starForService';
 
     //OPTIONAL CONST
 
@@ -66,6 +73,12 @@ abstract class DB
     const COL_ADDRESS_DETAIL = 'addressDetail';
     const COL_LOCATION_LAT = 'addressLat';
     const COL_LOCATION_LNG = 'addressLng';
+
+    //FOLLOW
+    const TABLE_FOLLOW = 'follows';
+    const COL_USER_FOLLOW_ID = 'followId';
+
+
 
     static function buildGetProperties($properties, $defaultTable = null)
     {

@@ -7,7 +7,7 @@
  * Time: 2:56 PM
  */
 
-namespace fooco\database\model\location;
+namespace fooco\database\model\follow;
 
 use fooco\database\DB;
 use wind\database\Model;
@@ -19,23 +19,22 @@ use wind\database\Model;
  * @property  string _table
  * @property array _tableFields
  */
-class LocationManagement extends Model
+class FollowManagement extends Model
 {
     private static $_instance;
 
     function __construct()
     {
-        $this->_table = DB::TABLE_LOCATION;
+        $this->_table = DB::TABLE_FOLLOW;
         $this->_tableFields = array(
-            DB::COL_LOCATION_ID,
-            DB::COL_LOCATION_NAME,
-            DB::COL_LOCATION_PARENT,
+            DB::COL_USER_ID,
+            DB::COL_USER_FOLLOW_ID
         );
         parent::__construct();
-        $this->_primaryFields[] = DB::COL_LOCATION_ID;
+        $this->_primaryFields = [DB::COL_USER_ID, DB::COL_USER_FOLLOW_ID];
         $this->_uniqueFields = [];
         $this->_notNullFields = [];
-        $this->_AI = true;
+        $this->_AI = false;
     }
 
     public static function getInstance() : FollowManagement

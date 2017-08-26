@@ -8,6 +8,7 @@
 
 namespace wind\database;
 
+use fooco\database\DB;
 use IteratorAggregate;
 use Traversable;
 use ArrayIterator;
@@ -58,7 +59,8 @@ abstract class RecordCollection implements IteratorAggregate
      */
     public function setProperties(array $properties)
     {
-        $this->_properties = $properties;
+//        $this->_properties = $properties;
+        $this->_properties = DB::buildGetProperties($properties, self::$_table);
     }
 
     public function toArray()

@@ -7,7 +7,7 @@
  * Time: 2:56 PM
  */
 
-namespace fooco\database\model\location;
+namespace fooco\database\model\review;
 
 use fooco\database\DB;
 use wind\database\Model;
@@ -19,7 +19,7 @@ use wind\database\Model;
  * @property  string _table
  * @property array _tableFields
  */
-class LocationManagement extends Model
+class ReviewManagement extends Model
 {
     private static $_instance;
 
@@ -38,10 +38,10 @@ class LocationManagement extends Model
         $this->_AI = true;
     }
 
-    public static function getInstance() : FollowManagement
+    public static function getInstance() : ReviewManagement
     {
         if (self::$_instance === null){
-            return new FollowManagement();
+            return new ReviewManagement();
         }
         return self::$_instance;
     }

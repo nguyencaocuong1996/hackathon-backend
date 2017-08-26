@@ -20,7 +20,7 @@ class Service extends Record
         $this->_tableFields = array(
             DB::COL_SERVICE_ID,
             DB::COL_SERVICE_NAME,
-            DB::COL_ADDRESS,
+            DB::COL_SERVICE_ADDRESS,
             DB::COL_SERVICE_TYPE_ID,
             DB::COL_SERVICE_LAT,
             DB::COL_SERVICE_LNG

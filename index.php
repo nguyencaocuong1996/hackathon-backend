@@ -15,3 +15,4 @@ $a = array(
 );
 $lc = new \fooco\database\model\location\LocationCollection('*');
 var_dump($lc->buildTree());
+echo "ASdsadsaddas";
